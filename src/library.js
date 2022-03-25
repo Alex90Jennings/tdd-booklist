@@ -7,8 +7,15 @@ class Library {
         return this.library
     }
 
-    remove(book) {
-        
+    remove(id) {
+        let newLibrary = []
+        for (let i = 0; i < this.library.length; i++) {
+            const book = this.library[i]
+            if (book.id !== id){
+                newLibrary.push(book)
+            }
+        }
+        return newLibrary
     }
 
     listOfBooks() {
@@ -37,5 +44,15 @@ class Library {
         return booksWithAuthor
     }
 
+    updateGenre(newGenre, id) {
+        for (let i = 0; i < this.library.length; i++) {
+            const book = this.library[i]
+            if (id === book.id){
+                book.genre = newGenre
+                return book 
+            }
+        }
+        return false
+    }
 }
 module.exports = Library
